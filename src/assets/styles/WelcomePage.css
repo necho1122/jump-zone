@@ -1,0 +1,122 @@
+.welcome-page{
+    font-family: 'Roboto', arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    background-color: #684B6A;
+    color: #fff;
+    padding-top: 60px;
+    height: 100vh;
+}
+
+.welcome-page img {
+    width: 40%;
+    height: auto;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-color: #684B6A;
+    width: 50%;
+}
+
+.image-container img {
+    width: 80%;
+    min-width: 200px;
+}
+
+.welcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+    padding: 0 20px;
+    margin-top: 60px;
+}
+
+.welcome h1 {
+  text-align: center;
+}
+
+.welcome ul {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.welcome ul li {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.welcome li i {
+    color: #FFAB2A;
+    box-sizing: content-box;
+    max-width: 40px;
+}
+
+/* CSS */
+.button-gs {
+    margin-top: 40px;
+  align-items: center;
+  background-color: #F77008;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 200px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+    letter-spacing: 3px;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-gs:hover,
+.button-gs:focus { 
+  background-color: #000;
+  color: #ffffff;
+}
+
+.button-gs:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.button-gs:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
