@@ -83,5 +83,5 @@ If you have any questions or feedback, please contact Nelson Ubac at [necho.web.
 [![Icono de Twitter](https://img.icons8.com/ios/100/twitter.png)](https://twitter.com/necho1122)
 [![Icono de Facebook](https://img.icons8.com/ios/100/facebook.png)](https://www.facebook.com/nelson.ubac)
 [![Icono de Whatsapp](https://img.icons8.com/ios/100/whatsapp.png)](https://wa.me/5595981113387)
-[![Icono de Telegram](https://img.icons8.com/ios/100/telegram.png)](https://t.me/tu_usuario)
+[![Icono de Telegram](https://img.icons8.com/ios/100/telegram.png)](https://t.me/necho1122)
 [![Icono de instagram](https://img.icons8.com/ios/100/instagram.png)](https://www.instagram.com/nelsonubac/)
