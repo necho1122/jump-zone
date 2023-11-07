@@ -9,8 +9,8 @@ import swagbucks from '../assets/images/swagbucks.png'
 function Home() {
 	const { user, isAuthenticated } = useAuth0();
 
-	return (
-		<div className='home-container'>
+		return (
+			<div className='home-container'>
 			<div className='welcome-message'>
 				{isAuthenticated ? (
 					<h2>Welcome, {user.name}</h2>
@@ -28,8 +28,9 @@ function Home() {
                     <li><a href=""><img src={swagbucks}/></a></li>
                 </ul>
             </div>
+
 		</div>
-	);
+		)
 }
 
 export default Home;

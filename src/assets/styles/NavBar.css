@@ -15,7 +15,7 @@
     z-index: 1;
 }
 
-.navbar ul {
+.navbar-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,11 +29,11 @@
     width: 100%;
 }
 
-.navbar ul li a{
+.navbar-list li a{
     color: #f8f3f3;
 }
 
-.navbar ul li {
+.navbar-list li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,4 +95,19 @@
 
 .navbar-logo{
   width: auto;
+}
+
+@media screen and (max-width: 420px) {
+
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+  }
+  .navbar-list{
+    display: none;
+  }
+
+  .navbar-list.show {
+    display: block;
+  }
 }

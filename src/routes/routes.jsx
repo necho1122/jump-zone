@@ -2,20 +2,24 @@ import { createBrowserRouter } from 'react-router-dom'
 import { WelcomePage } from '../components/WelcomePage'
 import Home from '../components/Home'
 import App from '../App'
-import Samplicio from '../data/Samplicio'
+import Samplicio from '../components/hosts/Samplicio'
+import About from '../components/About'
 
 export const router = createBrowserRouter([
   {
     path: '/index',
-    element: <App />,
+    element:
+      <App />,
     children: [
       {
         path: '/index',
-        element: <Home />
+        element: 
+            <Home />
+        
       },
       {
         path: '/index/about',
-        element: <div>About</div>
+        element: <About />
       },
       {
         path: '/index/contact',
@@ -23,7 +27,8 @@ export const router = createBrowserRouter([
       },
       {
         path: '/index/samplicio',
-        element: <Samplicio />
+        element: 
+            <Samplicio />
       }
     ]
   },
