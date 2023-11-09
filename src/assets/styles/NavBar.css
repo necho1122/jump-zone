@@ -1,7 +1,8 @@
 .navbar {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     list-style-type: none;
     margin: 0;
@@ -15,7 +16,25 @@
     z-index: 1;
 }
 
+.navbar-menu-shower{
+  display: none;
+}
+
+.navbar-menu-hidden{
+  display: none;
+}
+
 .navbar-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-list-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-list-ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,11 +48,11 @@
     width: 100%;
 }
 
-.navbar-list li a{
+.navbar-list-ul li a{
     color: #f8f3f3;
 }
 
-.navbar-list li {
+.navbar-list-ul li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +83,7 @@
   font-size: 1rem;
   padding: 8px 15px;
   font-weight: 600;
-  margin-right: 30px;
+  margin-right: 10px;
   margin-left: 10px;
   text-align: top;
   max-width: 80px;
@@ -102,12 +121,91 @@
   .navbar{
     display: flex;
     justify-content: space-between;
+    position: absolute;
   }
   .navbar-list{
     display: none;
   }
 
   .navbar-list.show {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    background-color: #684B6A;
+    z-index: 9999;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
+
+  .logoutbutton{
+    border-style: none;
+    color: #f8f3f3;
+    background-color: #684B6A;
+    width: fit-content;
+  }
+
+  .navbar-menu-shower.shower{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #684B6A;
+    color: #f8f3f3;
+  }
+
+  .navbar-menu-shower.shower i{
+    font-size: 30px;
+  }
+
+  .navbar-menu-hidden{
+    display: none;
+  }
+
+  .navbar-menu-hidden.hidden{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #684B6A;
+    color: #f8f3f3;
+  }
+
+  .navbar-menu-hidden.hidden i{
+    font-size: 30px;
+  }
+
+
+
+  .navbar-list-item{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    align-content: center;
+    text-align: center;
+    margin-right: 20px;
+  }
+
+  .navbar-list-ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 60px;
+    position: fixed;
+    background-color: #684B6A;
+  }
+
+  .navbar-list-ul li {
+    margin: 10px 0;
+  }
+  
+}
+
+.navbar-list-ul li a:hover{
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
 }

@@ -5,9 +5,7 @@
   "type": "module",
   "scripts": {
     "start-server": "node app.js",
-    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:nodemon\"",
-    "dev:vite": "vite",
-    "dev:nodemon": "nodemon --exec npm run start-server",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
