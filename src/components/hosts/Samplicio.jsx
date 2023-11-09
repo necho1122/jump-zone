@@ -13,6 +13,7 @@ class Samplicio extends Component {
 			obs: '',
 			addHostSection: 'add-host',
 			searchResults: 'search-section',
+			hasMatch: false,
 		};
 	}
 
@@ -26,7 +27,6 @@ class Samplicio extends Component {
 		const response = await fetch(this.API_URL + this.getData);
 		const data = await response.json();
 		this.setState({ notes: data });
-		console.log(data);
 	}
 
 	componentDidMount() {
@@ -61,7 +61,7 @@ class Samplicio extends Component {
 		});
 
 		const data = await response.json();
-		console.log(data);
+		alert(data);
 		this.refreshNotes();
 	}
 
@@ -104,7 +104,7 @@ class Samplicio extends Component {
 							onChange={this.handleSearchChange}
 							placeholder='Search by Host'
 						/>
-						{search && filteredNotes.length > 0 ? ( // Cambia esto
+						{search && filteredNotes.length > 0 ? (
 							filteredNotes.map((note) => (
 								<div
 									key={note.id}
@@ -118,9 +118,9 @@ class Samplicio extends Component {
 									<p>{note.obs}</p>
 								</div>
 							))
-						) : (
-							<p className='search-results'>No se encontraron coincidencias</p> // Añade esto
-						)}
+						) : !filteredNotes.length ? (
+							<p className='search-results'>No matches found</p>
+						) : ""}
 					</div>
 					<div className={this.state.addHostSection}>
 						<input
@@ -137,7 +137,6 @@ class Samplicio extends Component {
 							placeholder='add link'
 							className='link-input add-input'
 						/>{' '}
-						{/* Añade esto */}
 						<input
 							type='text'
 							value={obs}
