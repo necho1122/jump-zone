@@ -2,7 +2,7 @@
 
 ## Description
 
-Jump Zone Survey App is a web application that allows users to store and manage survey host data. The application is built using React, MongoDB Atlas, and Express. Additionally, it incorporates user authentication system provided by Auth0 to ensure secure access and data protection.
+Jump Zone Survey App is a web application that allows users to store and manage survey host data. The application is built using React, MongoDB Atlas, and Express (for APIs  RESTful to fetch from MongoDB). Additionally, it incorporates user authentication system provided by Auth0 to ensure secure access and data protection.
 
 ## Features
 
