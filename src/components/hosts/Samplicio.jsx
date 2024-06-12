@@ -1,164 +1,151 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import '../../assets/styles/Samplicio.css';
 import NavBar from '../header/NavBar';
 
-class Samplicio extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			notes: [],
-			search: '',
-			host: '',
-			link: '',
-			obs: '',
-			addHostSection: 'add-host',
-			searchResults: 'search-section',
-			hasMatch: false,
-		};
-	}
+const Samplicio = () => {
+    const [notes, setNotes] = useState([]);
+    const [search, setSearch] = useState('');
+    const [hostName, setHost] = useState('');
+    const [hostLink, setLink] = useState('');
+    const [coments, setObs] = useState('');
+    const [addHostSection, setAddHostSection] = useState('add-host');
+    const [searchResults, setSearchResults] = useState('search-section');
 
-	API_URL = 'http://localhost:5038';
+    const API_URL = 'http://localhost:5038';
+    const getData = '/api/jumpzoneapp/getnotes';
+    const postData = '/api/jumpzoneapp/AddNote';
 
-	getData = '/api/jumpzoneapp/getnotes';
+    const refreshNotes = async () => {
+        const response = await fetch(API_URL + getData);
+        const data = await response.json();
+        setNotes(data);
+    };
 
-	postData = '/api/jumpzoneapp/AddNote';
+    useEffect(() => {
+        refreshNotes();
+    }, []);
 
-	async refreshNotes() {
-		const response = await fetch(this.API_URL + this.getData);
-		const data = await response.json();
-		this.setState({ notes: data });
-	}
+    const handleHostChange = (event) => {
+        setHost(event.target.value);
+    };
 
-	componentDidMount() {
-		this.refreshNotes();
-	}
+    const handleLinkChange = (event) => {
+        setLink(event.target.value);
+    };
 
-	handleHostChange = (event) => {
-		this.setState({ host: event.target.value });
-	};
+    const handleObsChange = (event) => {
+        setObs(event.target.value);
+    };
 
-	handleLinkChange = (event) => {
-		this.setState({ link: event.target.value });
-	};
+    const addNote = async () => {
+        const response = await fetch(API_URL + postData, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                hostName,
+                hostLink,
+                coments,
+            }),
+        });
 
-	handleObsChange = (event) => {
-		this.setState({ obs: event.target.value });
-	};
+        const data = await response.json();
+        alert(data);
+        refreshNotes();
+    };
 
-	async addNote() {
-		const { host, link, obs } = this.state;
+    const handleSearchChange = (event) => {
+        setSearch(event.target.value);
+    };
 
-		const response = await fetch(this.API_URL + this.postData, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				host,
-				link,
-				obs,
-			}),
-		});
+    const handleClassChange = () => {
+        setAddHostSection('add-host-section');
+    };
 
-		const data = await response.json();
-		alert(data);
-		this.refreshNotes();
-	}
+    const handleSearchClassChange = () => {
+        setSearchResults('search');
+    };
 
-	handleSearchChange = (event) => {
-		this.setState({ search: event.target.value });
-	};
+    const filteredNotes = notes.filter((note) => note.hostName.includes(search));
 
-	handleClassChange = () => {
-		this.setState({ addHostSection: 'add-host-section' });
-	};
+    return (
+        <>
+            <NavBar />
+            <div className='samplicio-container'>
+                <h1>Samplicio</h1>
 
-	handleSearchClassChange = () => {
-		this.setState({ searchResults: 'search' });
-	};
-
-	render() {
-		const { notes, search, host, link, obs } = this.state;
-		const filteredNotes = notes.filter((note) => note.host.includes(search));
-
-			return (
-				<>
-				<NavBar />
-				<div className='samplicio-container'>
-					<h1>Samplicio</h1>
-	
-					<div className={this.state.searchResults}>
-						<button
-							className='add-host-button'
-							onClick={() => {
-								this.handleClassChange();
-								this.handleSearchClassChange();
-							}}
-						>
-							Add host
-						</button>
-						<input
-							className='search-input'
-							type='text'
-							value={search}
-							onChange={this.handleSearchChange}
-							placeholder='Search by Host'
-						/>
-						{search && filteredNotes.length > 0 ? (
-							filteredNotes.map((note) => (
-								<div
-									key={note.id}
-									className='search-results'
-								>
-									<h4>{note.host}</h4>
-									<p>
-										<b>Link: </b>
-										{note.link}
-									</p>
-									<p>{note.obs}</p>
-								</div>
-							))
-						) : !filteredNotes.length ? (
-							<p className='search-results'>No matches found</p>
-						) : ""}
-					</div>
-					<div className={this.state.addHostSection}>
-						<input
-							type='text'
-							value={host}
-							onChange={this.handleHostChange}
-							placeholder='Host'
-							className='host-input add-input'
-						/>{' '}
-						<input
-							type='text'
-							value={link}
-							onChange={this.handleLinkChange}
-							placeholder='add link'
-							className='link-input add-input'
-						/>{' '}
-						<input
-							type='text'
-							value={obs}
-							onChange={this.handleObsChange}
-							placeholder='add a comment'
-							className='obs-input add-input'
-						/>{' '}
-						<button
-							className='add-button'
-							onClick={() => {
-								this.addNote();
-								this.setState({ searchResults: 'search-section' });
-								this.setState({ addHostSection: 'add-host' });
-							}}
-						>
-							Add
-						</button>
-					</div>
-				</div>
-				</>
-			);
-	}
-}
+                <div className={searchResults}>
+                    <button
+                        className='add-host-button'
+                        onClick={() => {
+                            handleClassChange();
+                            handleSearchClassChange();
+                        }}
+                    >
+                        Add host
+                    </button>
+                    <input
+                        className='search-input'
+                        type='text'
+                        value={search}
+                        onChange={handleSearchChange}
+                        placeholder='Search by Host'
+                    />
+                    {search && filteredNotes.length > 0 ? (
+                        filteredNotes.map((note) => (
+                            <div
+                                key={note._id}
+                                className='search-results'
+                            >
+                                <h4>{note.hostName}</h4>
+                                <p>
+                                    <b>Link: </b>
+                                    {note.hostLink}
+                                </p>
+                                <p>{note.coments}</p>
+                            </div>
+                        ))
+                    ) : !filteredNotes.length ? (
+                        <p className='search-results'>No matches found</p>
+                    ) : ""}
+                </div>
+                <div className={addHostSection}>
+                    <input
+                        type='text'
+                        value={hostName}
+                        onChange={handleHostChange}
+                        placeholder='Host name'
+                        className='host-input add-input'
+                    />{' '}
+                    <input
+                        type='text'
+                        value={hostLink}
+                        onChange={handleLinkChange}
+                        placeholder='Add link'
+                        className='link-input add-input'
+                    />{' '}
+                    <input
+                        type='text'
+                        value={coments}
+                        onChange={handleObsChange}
+                        placeholder='Add a comment'
+                        className='obs-input add-input'
+                    />{' '}
+                    <button
+                        className='add-button'
+                        onClick={() => {
+                            addNote();
+                            setSearchResults('search-section');
+                            setAddHostSection('add-host');
+                        }}
+                    >
+                        Add
+                    </button>
+                </div>
+            </div>
+        </>
+    );
+};
 
 export default Samplicio;

@@ -1,43 +1,66 @@
-var Express = require('express');
-var MongoClient = require('mongodb').MongoClient;
-var cors = require('cors');
+import Express, { json } from 'express';
+import { MongoClient } from 'mongodb';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import process from 'process';
 
-var app = Express();
+dotenv.config();
+
+const app = Express();
 app.use(cors());
-app.use(Express.json());
-require('dotenv').config();
+app.use(json());
 
+const CONNECTION_STRING = process.env.MONGODB_APP_URL;
+const DATABASENAME = 'jumpzoneapp';
 
-var CONNECTION_STRING = process.env.MONGODB_APP_URL;
-
-var DATABASENAME = 'jumpzoneapp';
-
-var db;
+let db;
 
 app.listen(5038, () => {
-    MongoClient.connect(CONNECTION_STRING, { useUnifiedTopology: true }, (error, client) => {
-        if (error) {
-            throw error;
-        }
-        db = client.db(DATABASENAME);
-        console.log("Connected to `" + DATABASENAME + "`!");
-    });
+	MongoClient.connect(
+		CONNECTION_STRING,
+		{ useUnifiedTopology: true },
+		(error, client) => {
+			if (error) {
+				throw error;
+			}
+			db = client.db(DATABASENAME);
+			console.log('¡Conectado a `' + DATABASENAME + '`!');
+		}
+	);
 });
 
-app.get('/api/jumpzoneapp/GetNotes', (req, res) => {
-    db.collection('jumpzoneappcollection').find({}).toArray((error, result) => {
-        res.send(result);
-    });
+app.get('/api/jumpzoneapp/getnotes', (req, res) => {
+	db.collection('jumpzone')
+		.find({})
+		.toArray((error, result) => {
+			if (error) {
+				res.status(500).send(error);
+				return;
+			}
+			res.send(result);
+		});
 });
 
-app.post('/api/jumpzoneapp/AddNote', (req, res) => { // Quita multer().none()
-    db.collection('jumpzoneappcollection').count({}, (error, count) => {
-        db.collection('jumpzoneappcollection').insertOne({
-            id: (count + 1).toString(),
-            host: req.body.host,
-            link: req.body.link,
-            obs: req.body.obs,
-        });
-        res.json("added successfully");
-    });
+app.post('/api/jumpzoneapp/AddNote', (req, res) => {
+	db.collection('jumpzone').countDocuments({}, (error, count) => {
+		if (error) {
+			res.status(500).send(error);
+			return;
+		}
+		db.collection('jumpzone').insertOne(
+			{
+				id: (count + 1).toString(),
+				hostName: req.body.hostName,
+				hostLink: req.body.hostLink,
+				coments: req.body.coments,
+			},
+			(err) => {
+				if (err) {
+					res.status(500).send(err);
+					return;
+				}
+				res.json('Agregado exitosamente');
+			}
+		);
+	});
 });
