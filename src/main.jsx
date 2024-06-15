@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     clientId="IJMXcKDAU03DBF3pnoxJ1E7r3CM9HASn"
     cacheLocation="memory"
     authorizationParams={{
-      redirect_uri: 'http://localhost:5173/samplicio'
+      redirect_uri: 'https://jump-zone-app.vercel.app'
     }}
   >
     <BrowserRouter>
