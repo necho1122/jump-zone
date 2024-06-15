@@ -13,6 +13,7 @@ function NavBar() {
 
 	return (
 		<div className='navbar'>
+			<div className="navbar-container">
 			<Link
 				className='navbar-logo'
 				to='/index'
@@ -59,6 +60,7 @@ function NavBar() {
 				>
 					<i className="fa-solid fa-x"></i>
 				</button>
+			</div>
 			</div>
 		</div>
 	);

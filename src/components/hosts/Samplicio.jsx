@@ -11,9 +11,9 @@ const Samplicio = () => {
     const [addHostSection, setAddHostSection] = useState('add-host');
     const [searchResults, setSearchResults] = useState('search-section');
 
-    const API_URL = 'http://localhost:5038';
-    const getData = '/api/jumpzoneapp/getnotes';
-    const postData = '/api/jumpzoneapp/AddNote';
+    const API_URL = 'https://jump-zone-api.vercel.app';
+    const getData = '/data';
+    const postData = '/AddNote';
 
     const refreshNotes = async () => {
         const response = await fetch(API_URL + getData);

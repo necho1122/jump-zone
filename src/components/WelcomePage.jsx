@@ -6,7 +6,8 @@ export function WelcomePage() {
 	const { loginWithRedirect } = useAuth0();
 
 	return (
-		<div className="welcome-page">
+		<div className="welcome-page-container">
+			<div className="welcome-page">
 			<div className="image-container">
 				<img src={logo} alt="jump zone logo" />
 			</div>
@@ -32,6 +33,7 @@ export function WelcomePage() {
 					Get Started
 				</button>
 			</div>
+		</div>
 		</div>
 	);
 }
