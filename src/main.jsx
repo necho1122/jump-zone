@@ -5,12 +5,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './App'
 import { WelcomePage } from './components/WelcomePage';
 import SamplicioContainer from './components/SamplicioContainer';
+import env from 'react-dotenv';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Auth0Provider
-    domain="dev-826wm82jyl1s8tys.us.auth0.com"
-    clientId="IJMXcKDAU03DBF3pnoxJ1E7r3CM9HASn"
-    cacheLocation="memory"
+    domain= {env.AUTH0_DOMAIN}
+    clientId= {env.AUTH0_CLIENT_ID}
+    cacheLocation={env.AUTH0_CACHE}
     authorizationParams={{
       redirect_uri: 'https://jump-zone-app.vercel.app/index'
     }}
