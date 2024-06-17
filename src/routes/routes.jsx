@@ -22,26 +22,25 @@ export const router = createBrowserRouter([
 	{
 		path: '/index',
 		element: <App />,
+	},
+	{
+		path: '/index/about',
+		element: <About />,
+	},
+	{
+		path: '/index/contact',
+		element: <Contact />,
+	},
+	{
+		element: <ProtectedRoute />,
 		children: [
 			{
-				path: '/index/about',
-				element: <About />,
-			},
-			{
-				path: '/index/contact',
-				element: <Contact />,
-			},
-			{
-				element: <ProtectedRoute />,
-				children: [
-					{
-						path: '/index/samplicio',
-						element: <Samplicio />,
-					},
-				],
+				path: '/index/samplicio',
+				element: <Samplicio />,
 			},
 		],
 	},
+
 	{
 		path: '*',
 		element: (
