@@ -3,7 +3,8 @@ import { WelcomePage } from '../components/WelcomePage';
 import App from '../App';
 import Samplicio from '../components/hosts/Samplicio';
 import About from '../components/About';
-import ProtectedRoute from './ProtectedRoute'; // Importa el componente ProtectedRoute
+import ProtectedRoute from './ProtectedRoute';
+import Contact from '../components/Contact';
 
 export const router = createBrowserRouter([
 	{
@@ -19,22 +20,20 @@ export const router = createBrowserRouter([
 		element: <div>Register</div>,
 	},
 	{
+		path: '/index',
+		element: <App />,
 		children: [
 			{
-				element: <ProtectedRoute />, // Protege las rutas hijas
+				path: '/index/about',
+				element: <About />,
+			},
+			{
+				path: '/index/contact',
+				element: <Contact />,
+			},
+			{
+				element: <ProtectedRoute />,
 				children: [
-					{
-						path: '/index',
-						element: <App />,
-					},
-					{
-						path: '/index/about',
-						element: <About />,
-					},
-					{
-						path: '/index/contact',
-						element: <div>Contact</div>,
-					},
 					{
 						path: '/index/samplicio',
 						element: <Samplicio />,

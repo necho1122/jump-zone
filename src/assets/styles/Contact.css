@@ -1,0 +1,65 @@
+.contact
+{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.contact h2
+{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact h3
+{
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact p
+{
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact ul
+{
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact ul li
+{
+    margin-bottom: 1rem;
+}
+
+.contact ul li strong
+{
+    font-weight: bold;
+}
+
+.contact ul li p
+{
+    margin-top: 0.5rem;
+}
+
+.contact ul li a
+{
+    color: #007bff;
+    /* Color de enlace, puedes ajustarlo según tu paleta de colores */
+    text-decoration: none;
+}
+
+.contact ul li a:hover
+{
+    text-decoration: underline;
+}
+
+.contact .thank-you
+{
+    font-style: italic;
+    margin-top: 2rem;
+}

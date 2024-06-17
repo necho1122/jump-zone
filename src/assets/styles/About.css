@@ -1,0 +1,70 @@
+.about
+{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.about h2
+{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about h3
+{
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about p
+{
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.about ul
+{
+    list-style-type: none;
+    padding: 0;
+}
+
+.about ul li
+{
+    margin-bottom: 1rem;
+}
+
+.about ul li strong
+{
+    font-weight: bold;
+}
+
+.about ul li p
+{
+    margin-top: 0.5rem;
+}
+
+.about ul li a
+{
+    color: #007bff;
+    /* Color de enlace, puedes ajustarlo según tu paleta de colores */
+    text-decoration: none;
+}
+
+.about ul li a:hover
+{
+    text-decoration: underline;
+}
+
+.about .thank-you
+{
+    font-style: italic;
+    margin-top: 2rem;
+}
+
+.about .contact-info
+{
+    margin-top: 1rem;
+}
