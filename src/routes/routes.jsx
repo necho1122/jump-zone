@@ -1,10 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { WelcomePage } from '../components/WelcomePage';
-import Home from '../components/Home';
 import App from '../App';
 import Samplicio from '../components/hosts/Samplicio';
 import About from '../components/About';
-import ProtectedRoute from '../components/ProtectedRoute'; // Importa el componente ProtectedRoute
+import ProtectedRoute from './ProtectedRoute'; // Importa el componente ProtectedRoute
 
 export const router = createBrowserRouter([
 	{
@@ -20,15 +19,13 @@ export const router = createBrowserRouter([
 		element: <div>Register</div>,
 	},
 	{
-		path: '/index',
-		element: <App />,
 		children: [
 			{
 				element: <ProtectedRoute />, // Protege las rutas hijas
 				children: [
 					{
 						path: '/index',
-						element: <Home />,
+						element: <App />,
 					},
 					{
 						path: '/index/about',
