@@ -8,8 +8,8 @@ import SamplicioContainer from './components/SamplicioContainer';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Auth0Provider
-    domain={import.meta.env.AUTH0_DOMAIN}
-    clientId={import.meta.env.AUTH0_CLIENT_ID}
+    domain={import.meta.env.VITE_AUTH0_DOMAIN}
+    clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
     cacheLocation="memory"
     authorizationParams={{
       redirect_uri: 'https://jump-zone-app.vercel.app/index'
